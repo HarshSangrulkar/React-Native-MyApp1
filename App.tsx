@@ -4,6 +4,7 @@ import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } fro
 const App = ()=>{
 
   const [goal,setGoal]=useState('');
+  const [list,setList]=useState<string[]>([])
 
   const goalInputHandler =(eneterText:string)=>{
     //console.log(eneterText);
@@ -13,7 +14,14 @@ const App = ()=>{
   const addGoalHandler=()=>{
     //display the entered value
     //for this first save the entered value in a state
-    console.log(goal);
+    //console.log(goal);
+
+    //syntax
+    /*
+    setState((prevState)=>(prevState + newElement))
+    */ 
+    setList((currentGoals)=>[...currentGoals,goal]);
+    setGoal("");
   }
 
   return(
@@ -23,6 +31,8 @@ const App = ()=>{
       <TouchableOpacity style={styles.button} onPress={addGoalHandler}><Text>Add Goal</Text></TouchableOpacity>
       </View>
       <Text style={styles.text}>List of Goals</Text>
+      {/* list.map((value)=><Text>{value}<Text/>) */}
+      {list.map((g,index)=><Text key={index}>{g}</Text>)}
     </SafeAreaView>
   )
 }
