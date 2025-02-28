@@ -1,11 +1,20 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native"
+import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 
 const App = ()=>{
+
+  const goalInputHandler =(eneterText:string)=>{
+    console.log(eneterText);
+  }
+
   return(
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello World</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.inputContainer}>
+      <TextInput style={styles.textinput} placeholder="Your course Goal" onChangeText={goalInputHandler}></TextInput>
+      <TouchableOpacity style={styles.button}><Text>Add Goal</Text></TouchableOpacity>
+      </View>
+      <Text style={styles.text}>List of Goals</Text>
+    </SafeAreaView>
   )
 }
 
@@ -14,10 +23,40 @@ const styles = StyleSheet.create({
     flex:1,
     justifyContent:"center",
     alignItems:"center",
+    borderColor:"black",
+    borderWidth:3,
+    borderRadius:10,
+    margin:15,
+    padding:5,
+    backgroundColor:"lightgray"
   },
   text:{
     fontSize:24,
     color:"black",
+  },
+  inputContainer:{
+    // flex:1,
+    flexDirection:"row",
+    justifyContent:"space-between",
+    alignItems:"center",
+    margin:10,
+    padding:25,
+    borderColor:"black",
+    borderWidth:2,
+    
+  },
+  textinput:{
+    flex:1,
+    borderColor:"black",
+    borderWidth:2,
+    borderRadius:5,
+    padding:5,
+    margin:5,
+  },
+  button:{
+    borderColor:"black",
+    padding:5,
+    backgroundColor:"blue",
   }
 })
 
