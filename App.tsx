@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 
 const App = ()=>{
 
+  const [goal,setGoal]=useState('');
+
   const goalInputHandler =(eneterText:string)=>{
-    console.log(eneterText);
+    //console.log(eneterText);
+    setGoal(eneterText);
+  }
+
+  const addGoalHandler=()=>{
+    //display the entered value
+    //for this first save the entered value in a state
+    console.log(goal);
   }
 
   return(
     <SafeAreaView style={styles.container}>
       <View style={styles.inputContainer}>
       <TextInput style={styles.textinput} placeholder="Your course Goal" onChangeText={goalInputHandler}></TextInput>
-      <TouchableOpacity style={styles.button}><Text>Add Goal</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={addGoalHandler}><Text>Add Goal</Text></TouchableOpacity>
       </View>
       <Text style={styles.text}>List of Goals</Text>
     </SafeAreaView>
