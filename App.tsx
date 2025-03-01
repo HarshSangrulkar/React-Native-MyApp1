@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 
 const App = () => {
 
@@ -34,11 +34,14 @@ const App = () => {
       </View>
 
       <View style={styles.goalContainer}>
-        <Text style={styles.text}>List of Goals</Text>
-        {/* list.map((value)=><Text>{value}<Text/>) */}
-        {list.map((value, index) => <View key={index}>
-          <Text style={styles.goalItem}>{value}</Text>
-        </View>)}
+        <ScrollView>
+          {/* react js by default has scroll on the web, for react native we must import the scroll view component. also we enclose the scroll view tag inside the normal view so it doesnt affect other space occupied */}
+          <Text style={styles.text}>List of Goals</Text>
+          {/* list.map((value)=><Text>{value}<Text/>) */}
+          {list.map((value, index) => <View key={index}>
+            <Text style={styles.goalItem}>{value}</Text>
+          </View>)}
+        </ScrollView>
       </View>
     </SafeAreaView>
   )
