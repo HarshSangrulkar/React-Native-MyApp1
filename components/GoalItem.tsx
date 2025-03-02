@@ -1,14 +1,18 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native"
+import { ScrollView, StyleSheet, Text, View, Pressable } from "react-native"
 //import GoalInput from "./GoalInput";
 
 interface GoalItemProps {
     text: string;
+    id: string;
+    onDeleteItem: (id: string) => void
 }
-const GoalItem = ({ text }: GoalItemProps) => {
+const GoalItem = ({ text, id, onDeleteItem }: GoalItemProps) => {
     return (
-        <View style={styles.goalItem}>
-            <Text style={styles.goalText}>{text}</Text>
-        </View>
+        <Pressable onPress={() => onDeleteItem(id)}>
+            <View style={styles.goalItem}>
+                <Text style={styles.goalText}>{text}</Text>
+            </View>
+        </Pressable>
     )
 }
 const styles = StyleSheet.create({
@@ -25,3 +29,10 @@ const styles = StyleSheet.create({
 })
 
 export default GoalItem;
+
+/*
+for deleting a segment
+web: onClick()
+app: old way: touchable, touchableNative, touchableOpacity
+app: new way: pressable
+*/
